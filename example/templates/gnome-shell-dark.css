@@ -25,6 +25,13 @@ stage {
 
 
 /* panel */
+
+#panelRight > * > * .panel-button, .clock {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 #panel{
   background-color: @{surface.hex};
   height: 38px;
