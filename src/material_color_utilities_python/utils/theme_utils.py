@@ -1,4 +1,4 @@
-from transformers import ColorTransformer
+from src.transformers import ColorTransformer
 
 from ..blend.blend import *
 from ..palettes.core_palette import *

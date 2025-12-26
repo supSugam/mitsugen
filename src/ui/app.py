@@ -2,8 +2,8 @@ import re
 
 import gi
 
-from applier.domain import ApplierDomain
-from ui.widgets.colors_popover import ColorPopover
+from src.applier.domain import ApplierDomain
+from src.ui.widgets.colors_popover import ColorPopover
 
 gi.require_version("Gtk", "4.0")
 gi.require_version("Adw", "1")

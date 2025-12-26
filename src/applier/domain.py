@@ -5,11 +5,11 @@ from configparser import ConfigParser
 from pydantic import BaseModel
 from rich.console import Console
 
-from material_color_utilities_python.closest_folder_color.domain import (
+from src.material_color_utilities_python.closest_folder_color.domain import (
     ClosestFolderColorDomain,
 )
-from models import MaterialColors
-from util import Config, Scheme, Theme, reload_apps, set_wallpaper
+from src.models import MaterialColors
+from src.util import Config, Scheme, Theme, reload_apps, set_wallpaper
 
 
 class GenerationOptions(BaseModel):
@@ -90,10 +90,15 @@ class ApplierDomain:
         lightmode_enabled = self._generation_options.lightmode_enabled
 
         if self._has_config_key("SPOTIFY" if lightmode_enabled else "SPOTIFY-DARK"):
-            print("Setting up spotify theme")
-            os.system("spicetify config current_theme Matte")
-            os.system("spicetify config color_scheme mitsugen")
-            os.system("spicetify apply")
+            import shutil
+
+            if shutil.which("spicetify"):
+                print("Setting up spotify theme")
+                os.system("spicetify config current_theme Matte")
+                os.system("spicetify config color_scheme mitsugen")
+                os.system("spicetify apply")
+            else:
+                print("Spicetify not found. Skipping Spotify theme application.")
 
         if lightmode_enabled:
             os.system(

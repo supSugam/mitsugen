@@ -7,10 +7,10 @@ from pathlib import Path
 
 from rich.logging import RichHandler
 
-from material_color_utilities_python import Image, themeFromImage
-from material_color_utilities_python.utils.theme_utils import themeFromSourceColor
-from models import MaterialColors
-from transformers import ColorTransformer
+from src.material_color_utilities_python import Image, themeFromImage
+from src.material_color_utilities_python.utils.theme_utils import themeFromSourceColor
+from src.models import MaterialColors
+from src.transformers import ColorTransformer
 
 
 def parse_arguments():
@@ -32,6 +32,12 @@ def parse_arguments():
         "-i",
         "--ui",
         help="use ui",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-m",
+        "--monitor",
+        help="start in headless monitor mode",
         action="store_true",
     )
     args: Namespace = parser.parse_args()
@@ -155,11 +161,13 @@ class Config:
                 num += 1
 
             try:
+                # Ensure the directory exists
+                output_path.parent.mkdir(parents=True, exist_ok=True)
                 with open(output_path, "w") as output:
                     output.write(output_data)
             except OSError as err:
                 logging.warning(
-                    f"Could not write {template_name} template to {err.filename}"
+                    f"Could not write {template_name} template to {output_path}: {err}"
                 )
             else:
                 log.info(f"Exported {template_name} template to {output_path}")

@@ -549,7 +549,7 @@ stage {
 }
 
 .quick-menu-toggle .quick-toggle-arrow:ltr { border-radius: 0 15px 15px 0; }
-.quick-menu-toggle .quicl-toggle-arrow:rtl { border-radius: 15px 0 0 15px; }
+.quick-menu-toggle .quick-toggle-arrow:rtl { border-radius: 15px 0 0 15px; }
 
 .quick-toggle:hover, .quick-menu-toggle .quick-toggle:hover, .quick-menu-toggle .quick-toggle-arrow:hover {
   background-color:  @{surfaceVariant.hex};
@@ -654,11 +654,46 @@ stage {
 
 
 /* Notifications */
-.notification-banner{
-  background-color:  @{surface.hex};
-  color: rgba(234, 243, 251, 1);
+.notifications-toasts,
+.notifications-toasts .notification-toast-container {
+    overflow: hidden !important; 
+    width: 34em !important;
+    max-width: 34em !important;
+    margin: 0 auto !important;
 }
 
+.notification-toast {
+    width: 34em !important;
+    max-width: 34em !important;
+    margin: 5px auto !important;
+    overflow: hidden !important;
+}
+
+.notification-banner {
+  background-color:  @{surface.hex};
+  color: rgba(234, 243, 251, 1);
+  width: 34em !important;
+  max-width: 34em !important;
+  min-height: 52px;
+  margin: 5px auto !important;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden !important;
+  border: 1px solid transparent !important; /* Forces layout constraint */
+}
+
+.notification-banner .message-content {
+    width: 100% !important;
+    max-width: 34em !important;
+}
+
+.notification-banner .message-title,
+.notification-banner .message-body {
+    white-space: pre-wrap !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+}
 .notification-button:active{
   background-color:  @{primary.hex};
   color: rgba(234, 243, 251, 1);
