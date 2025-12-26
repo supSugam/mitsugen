@@ -1093,10 +1093,34 @@ StEntry:focus {
 }
 
 
+/* Run Dialog (Alt+F2) */
+.run-dialog {
+  border-radius: 18px !important;
+  background-color: @{surface.hex} !important;
+  color: rgba(234, 243, 251, 1) !important;
+  border: none !important;
+  box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+.run-dialog-entry {
+  background-color: @{surfaceVariant.hex} !important;
+  border-radius: 12px !important;
+  padding: 8px !important;
+  color: rgba(234, 243, 251, 1) !important;
+  selection-background-color: @{primary.hex} !important;
+  selected-color: #ffffff !important;
+  box-shadow: inset 0 0 0 1px rgba(652, 652, 652, 0.03) !important;
+  border: none !important;
+}
+
+.run-dialog-description {
+  color: rgba(234, 243, 251, 0.67) !important;
+}
+
 /* OSD */
 .modal-dialog {
   border-radius: 18px;
-  background-color:  @{surface.hex};
+  background-color: @{surface.hex};
   border: none;
   box-shadow: inset 0 0 0 1px rgba(652, 652, 652, 0.03);
   color: rgba(234, 243, 251, 1);
