@@ -63,6 +63,33 @@ class ApplierDomain:
         if self._generation_options.wallpaper_path is None:
             raise ValueError("Wallpaper path is None")
 
+        lightmode_enabled = self._generation_options.lightmode_enabled
+        postfix = "light" if lightmode_enabled else "dark"
+        theme_name = f"MeowterialYou-{postfix}"
+        legacy_name = f"custom-{postfix}"
+
+        # Paths
+        home = os.path.expanduser("~")
+        source_asset = os.path.abspath(f"assets/{theme_name}")
+        dest_theme = os.path.join(home, ".local/share/themes", theme_name)
+        legacy_theme = os.path.join(home, ".local/share/themes", legacy_name)
+
+        # 1. Install/Update Theme Assets
+        if os.path.exists(source_asset):
+            print(f"Installing theme assets from {source_asset} to {dest_theme}")
+            import shutil
+
+            shutil.copytree(source_asset, dest_theme, dirs_exist_ok=True)
+        else:
+            print(f"Warning: Theme assets not found at {source_asset}")
+
+        # 2. Cleanup Legacy
+        if os.path.exists(legacy_theme):
+            print(f"Removing legacy theme: {legacy_theme}")
+            import shutil
+
+            shutil.rmtree(legacy_theme)
+
         scheme = self._generation_options.scheme or self._get_scheme()
         Config.generate(
             scheme=scheme,

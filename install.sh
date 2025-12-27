@@ -14,10 +14,10 @@ echo "Copying light shell theme..."
 cp -r ./assets/Marble-blue-light ~/.themes
 
 echo "Copying dark gtk3 themes..."
-cp -r ./assets/custom-dark ~/.local/share/themes/
+cp -r ./assets/MeowterialYou-dark ~/.local/share/themes/
 
 echo "Copying light gtk3 themes..."
-cp -r ./assets/custom-light ~/.local/share/themes/
+cp -r ./assets/MeowterialYou-light ~/.local/share/themes/
 
 echo "Spotify theme..."
 git clone https://github.com/spicetify/spicetify-themes /tmp/spicetify-themes

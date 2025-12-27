@@ -97,6 +97,23 @@
   -gtk-secondary-caret-color: @accent_bg_color;
 }
 
+/* Desktop Icons Fix - Expanded Selectors */
+.nemo-desktop.nemo-canvas-item,
+.nemo-desktop.nemo-view,
+.desktop-icons,
+.ding-libs-window,
+.ding-desktop-window,
+#ding-window,
+.ding-window,
+.desktop-icons-window,
+window.desktop-window,
+.gjs-ding-window {
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 .background {
   color: @window_fg_color;
   background-color: @window_bg_color;
@@ -13538,4 +13555,18 @@ phosh-splash.light {
 
 .phosh-dropicon-shadow {
   -gtk-icon-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+terminal-window headerbar.titlebar {
+    background-color: rgba(0, 0, 0, 0.1);
+    background-image: none;
+    box-shadow: none;
+}
+
+terminal-window headerbar.titlebar button.titlebutton {
+    background: transparent;
+    box-shadow: none;
+}
+
+terminal-window headerbar.titlebar button.titlebutton:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
